@@ -28,18 +28,18 @@ class Grab_env:
 		x_ray = 1
 		return_polygon = 0
 
-		screen_vect = camera.getScreenVect(mouse_position[0],mouse_position[1])
+		screen_vect = self.camera.getScreenVect(self.mouse_pos[0],self.mouse_pos[1])
 		screen_vect.negate()
-		target_position = camera.worldPosition + screen_vect                
-		target_ray = camera.rayCast(target_position, camera, distance , property, return_normal, x_ray, return_polygon)
+		target_position = self.camera.worldPosition + screen_vect                
+		target_ray = self.camera.rayCast(target_position, self.camera, distance , property, return_normal, x_ray, return_polygon)
 		#import pdb; pdb.set_trace()
 		return target_ray
 
 	def select_obj(self, grabbed):
-		if obj_selected is not None :
-			unsel_obj(grabbed)
+		if self.obj_selected is not None :
+			self.unsel_obj(grabbed)
 		grabbed.color = grabbed.color + delta_color_sel
-		obj_selected = grabbed
+		self.obj_selected = grabbed
     
         #   selected = [object for object in objects if object.selected]
 
@@ -50,13 +50,13 @@ class Grab_env:
 	def calc_dest():
 		...
 
-	def grab_obj():
-		hitten = mouse_hit_ray(self, "selectable")
+	def grab_obj(self):
+		hitten = self.mouse_hit_ray(self, "selectable")
 		grabbed = hitten[0]
 		print(hitten[0])
 		if grabbed:
 		#    import pdb; pdb.set_trace()
-			if obj_selected is not grabbed:
+			if self.obj_selected is not grabbed:
 			
 				print(grabbed.color)
 		#   grabbed.localPosition = grabbed.localPosition - hitten[1]
@@ -66,4 +66,4 @@ def main():
 
 	grabing = Grab_env()
 	print(grabing)
-	grabing.grab_obj(self)
+	grabing.grab_obj()
