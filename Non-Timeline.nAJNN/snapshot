@@ -1,0 +1,9 @@
+{
+	Tempo_Point 0x1 create :start 0 :tempo 120.000000
+	Time_Point 0x2 create :start 0 :beats_per_bar 4 :beat_type 4
+	Track 0x3 create :name "Audio" :sequence 0x4 :selected 0 :color 2277532672
+	Control_Sequence 0x5 create :track 0x3 :name "Control" :color 1461912064
+	Control_Point 0x6 create :start 557056 :sequence 0x5 :selected 0 :y 0.722222
+	Control_Point 0x7 create :start 958464 :sequence 0x5 :selected 0 :y 0.388889
+	Audio_Sequence 0x4 create :track 0x3 :name "Fri Jul 31 17:02:43 2015"
+}

@@ -1,0 +1,29 @@
+Tempo_Point 0x1 create :start 0 :tempo 120.000000
+Time_Point 0x2 create :start 0 :beats_per_bar 4 :beat_type 4
+{
+	Track 0x3 create :name "Audio" :sequence 0x0 :selected 0 :color 1182554368
+	Audio_Sequence 0x4 create :track 0x3 :name "Fri Jul 31 16:13:00 2015"
+}
+Control_Sequence 0x5 create :track 0x3 :name "Control" :color 858194944
+Control_Point 0x6 create :start 172032 :sequence 0x5 :selected 0 :y 0.666667
+Control_Point 0x7 create :start 794624 :sequence 0x5 :selected 0 :y 0.592593
+Control_Sequence 0x5 set :name "Control " << :name "Control"
+Time_Point 0x8 create :start 0 :beats_per_bar 4 :beat_type 4
+Audio_Region 0x9 create :source "Audio 2-9.wav" :gain 1.000000 :fade-in-type 1 :fade-in-duration 256 :fade-out-type 1 :fade-out-duration 256 :color 42 :length 10036736 :start 135168 :sequence 0x4 :selected 0 :offset 0 :loop 0
+Cursor_Region 0xA create :start 0 :length 0 :label "" :type "Edit"
+Cursor_Region 0xA set :start 581632 :length 4294385664 << :start 0 :length 0
+Cursor_Region 0xA set :length 0 << :length 4294385664
+Cursor_Region 0xA set :start 0 :length 581632 << :start 581632 :length 0
+Cursor_Region 0xA set :length 1388544 << :length 581632
+Cursor_Region 0xA set :start 557056 :length 831488 << :start 0 :length 1388544
+{
+	Cursor_Region 0xB create :start 557056 :length 831488 :label "" :type "Playback"
+	Cursor_Region 0xA destroy << :start 557056 :length 831488 :label "" :type "Edit"
+}
+{
+	Control_Point 0x6 destroy << :start 176400 :sequence 0x5 :selected 0 :y 0.703704
+	Control_Point 0x7 destroy << :start 882000 :sequence 0x5 :selected 0 :y 0.388889
+	Control_Sequence 0x5 destroy << :track 0x3 :name "Control " :color 1532114432
+}
+Annotation_Sequence 0xC create :track 0x3
+Control_Sequence 0xD create :track 0x3 :name "Control" :color 1241191680
