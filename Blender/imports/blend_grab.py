@@ -1,5 +1,6 @@
 import bge
 import mathutils
+import imports.config
 
 ######### Move objects in environnement ###########
 
