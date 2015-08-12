@@ -1,4 +1,4 @@
-from OSC import OSCClient, OSCMessage
+from imports.OSC import OSCClient, OSCMessage
 
 ############# Send position via OSC #############
 
@@ -10,5 +10,5 @@ class OSCpipe:
 			print("DEBUG OSCpipe: \t{}".format(message))
 
 	##### INIT #####
-	def __init__(self, client, debug=None):
+	def __init__(self, object, debug=None):
 		...

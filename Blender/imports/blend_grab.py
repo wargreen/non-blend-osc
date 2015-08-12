@@ -53,6 +53,9 @@ class Grab_env():
 
 	def calc_dest():
 		...
+	
+	def move_obj_to():
+		...
 
 	def grab_obj(self):
 		if self.mouse.events[bge.events.LEFTMOUSE] is bge.logic.KX_INPUT_JUST_ACTIVATED :
