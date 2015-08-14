@@ -1,7 +1,7 @@
 import bge
 import mathutils
 import imports.config
-
+import time
 ######### Move objects in environnement ###########
 
 class Grab_env():
@@ -19,11 +19,11 @@ class Grab_env():
 		self.width = bge.render.getWindowWidth()
 		self.height = bge.render.getWindowHeight()
 		self.ctrl = ctrl #bge.logic.getCurrentController()
-		self.object = bge.logic.getCurrentScene()
-		self.camera = self.ctrl.owner
+		self.scene = bge.logic.getCurrentScene()
+		self.camera = self.scene.active_camera
 		
 		self.mouse = bge.logic.mouse
-		self.obj_selected = None
+		self.last_obj_selected = None
 		self.delta_color_sel = mathutils.Vector((0.2, 0.2, 0.2, 0))
 		self.debug("Instentiate Object")
 	
@@ -39,35 +39,65 @@ class Grab_env():
 		#import pdb; pdb.set_trace()
 		return target_ray
 
-	def select_obj(self, grabbed):
-		self.debug("selecting")
-		#if self.obj_selected is not None :
-		#	self.unsel_obj(grabbed)
-		grabbed.color = grabbed.color + self.delta_color_sel
-		self.obj_selected = grabbed
-    
-        #   selected = [object for object in objects if object.selected]
-
-	def unsel_obj(self):
-		object_selected.color = object_selected.color - delta_color_sel
-		object_selected = None
+	def toggle_select_obj(self, grabbed):
+		if grabbed is not None:
+			self.debug(grabbed.get("selected"))
+			if grabbed.get("selected", False):
+				##unselect
+				self.debug("unselect")
+				grabbed["selected"] = False
+				grabbed["selected_time"] = 0
+				self.debug(grabbed.color)
+				self.debug(grabbed["color_orig"])
+				grabbed.color = grabbed["color_orig"]
+				
+			else:
+				##select
+				self.debug("select")
+				grabbed["selected"] = True
+				grabbed["selected_time"] = time.time()
+				# FIXME 
+				grabbed["color_orig"] = grabbed.color
+				grabbed.color = grabbed.color + self.delta_color_sel
+				self.debug(grabbed.color)
+				self.debug(grabbed["color_orig"])
+		else:
+			self.debug("Rien de grabbed!")
+	
+	def toggle_active_cam():
+		self.scene.active_camera
+		self.scene.cameras
+		
 
 	def calc_dest():
 		...
 	
 	def move_obj_to():
 		...
-
+		
+	def move_selected(self):
+		obj_to_move =  [object for object in self.scene.objects if object.get("selected", False)]
+		self.debug(obj_to_move)
+		
 	def grab_obj(self):
 		if self.mouse.events[bge.events.LEFTMOUSE] is bge.logic.KX_INPUT_JUST_ACTIVATED :
 			hitten = self.mouse_hit_ray("selectable")
 			grabbed = hitten[0]
 			self.debug(hitten[0])
 			if grabbed:
+				delta_select_time = time.time() - grabbed.get("selected_time", 0)
+				if delta_select_time > 0.8:
+					self.debug("toggle select")
+					self.toggle_select_obj(grabbed)
+				else:
+					self.debug("move selected")
+					self.move_selected()
+				
+				
 			#    import pdb; pdb.set_trace()
-				if self.obj_selected is not grabbed:
-					self.debug(self.obj_selected)
-					self.debug(grabbed)
-					self.select_obj(grabbed)
+			#	if self.obj_selected is not grabbed:
+			#		self.debug(self.obj_selected)
+			#		self.debug(grabbed)
+			#		self.select_obj(grabbed)
 			#   grabbed.localPosition = grabbed.localPosition - hitten[1]
 			#   print(dir(grabbed))    
