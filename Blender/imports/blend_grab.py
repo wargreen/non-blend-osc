@@ -25,7 +25,7 @@ class Grab_env():
 		self.mouse = bge.logic.mouse
 		self.last_obj_selected = None
 		self.delta_color_sel = mathutils.Vector((0.2, 0.2, 0.2, 0))
-		self.debug("Instentiate Object")
+		self.debug("Instentiate Object Grab_env")
 	
 	def mouse_hit_ray(self, property, distance=50.0):
 		return_normal = 0
@@ -47,8 +47,10 @@ class Grab_env():
 				self.debug("unselect")
 				grabbed["selected"] = False
 				grabbed["selected_time"] = 0
-				self.debug(grabbed.color)
-				self.debug(grabbed["color_orig"])
+				#grabbed.color = grabbed.color - self.delta_color_sel
+				grabbed.debug = False
+				#self.debug(grabbed.color)
+				#self.debug(grabbed["color_orig"])
 				grabbed.color = grabbed["color_orig"]
 				
 			else:
@@ -57,10 +59,11 @@ class Grab_env():
 				grabbed["selected"] = True
 				grabbed["selected_time"] = time.time()
 				# FIXME 
-				grabbed["color_orig"] = grabbed.color
+				grabbed["color_orig"] = grabbed.color.copy()
 				grabbed.color = grabbed.color + self.delta_color_sel
-				self.debug(grabbed.color)
-				self.debug(grabbed["color_orig"])
+				grabbed.debug = True
+				#self.debug(grabbed.color)
+				#self.debug(grabbed["color_orig"])
 		else:
 			self.debug("Rien de grabbed!")
 	
