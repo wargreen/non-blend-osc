@@ -1,15 +1,19 @@
-import bge
-import mathutils
-import imports.config
+from sys import stderr
+from functools import partial
 import time
+import mathutils
+
+import bge
+import imports.config
 ######### Move objects in environnement ###########
+print_stderr = partial(print, file=stderr)
 
 class Grab_env():
-	debug = True
+	debug = False
 
 	def debug(self, message):
 		if self.debug:
-			print("DEBUG Grab_env : \t{}".format(message))
+			print_stderr("DEBUG Grab_env : \t{}".format(message))
 
 	##### INIT #####
 	def __init__(self, ctrl, debug=None):

@@ -2,8 +2,20 @@
 	Tempo_Point 0x1 create :start 0 :tempo 120.000000
 	Time_Point 0x2 create :start 0 :beats_per_bar 4 :beat_type 4
 	Track 0x3 create :name "Audio" :sequence 0x4 :selected 0 :color 2277532672
-	Control_Sequence 0x5 create :track 0x3 :name "Control" :color 1461912064
+	Control_Sequence 0x5 create :track 0x3 :name "Azimut" :color 1461912064
 	Control_Point 0x6 create :start 557056 :sequence 0x5 :selected 0 :y 0.722222
 	Control_Point 0x7 create :start 958464 :sequence 0x5 :selected 0 :y 0.388889
+	Control_Sequence 0x9 create :track 0x3 :name "Elevation" :color 3420068864
+	Control_Point 0xA create :start 266240 :sequence 0x9 :selected 0 :y 0.648148
+	Control_Point 0xD create :start 507904 :sequence 0x9 :selected 0 :y 0.481481
+	Control_Point 0xE create :start 540672 :sequence 0x9 :selected 0 :y 0.703704
+	Control_Point 0xB create :start 880640 :sequence 0x9 :selected 0 :y 0.425926
+	Control_Point 0xC create :start 1187840 :sequence 0x9 :selected 0 :y 0.759259
+	Control_Sequence 0xF create :track 0x3 :name "Radius" :color 637814784
+	Control_Point 0x10 create :start 131072 :sequence 0xF :selected 0 :y 0.870370
+	Control_Point 0x11 create :start 245760 :sequence 0xF :selected 0 :y 0.555556
+	Control_Point 0x12 create :start 647168 :sequence 0xF :selected 0 :y 0.629630
+	Control_Point 0x13 create :start 1097728 :sequence 0xF :selected 0 :y 0.407407
+	Control_Point 0x14 create :start 1355776 :sequence 0xF :selected 0 :y 0.796296
 	Audio_Sequence 0x4 create :track 0x3 :name "Fri Jul 31 17:02:43 2015"
 }
