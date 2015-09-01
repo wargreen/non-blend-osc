@@ -1,24 +1,19 @@
-from sys import stderr
+from imports.logs import Logged, logger
+logger = logger.getChild(__name__)
+
 from functools import partial
 import time
 import mathutils
 
 import bge
 import imports.config
+
 ######### Move objects in environnement ###########
-print_stderr = partial(print, file=stderr)
 
-class Grab_env():
-	debug = False
-
-	def debug(self, message):
-		if self.debug:
-			print_stderr("DEBUG Grab_env : \t{}".format(message))
-
+class Grab_env(Logged):
 	##### INIT #####
-	def __init__(self, ctrl, debug=None):
-		if debug is not None:
-			self.debug = debug
+	def __init__(self, ctrl):
+		super().__init__(logger)
 		
 		self.width = bge.render.getWindowWidth()
 		self.height = bge.render.getWindowHeight()
@@ -29,6 +24,7 @@ class Grab_env():
 		self.mouse = bge.logic.mouse
 		self.last_obj_selected = None
 		self.delta_color_sel = mathutils.Vector((0.2, 0.2, 0.2, 0))
+		
 		self.debug("Instentiate Object Grab_env")
 	
 	def mouse_hit_ray(self, property, distance=50.0):
@@ -45,10 +41,10 @@ class Grab_env():
 
 	def toggle_select_obj(self, grabbed):
 		if grabbed is not None:
-			self.debug(grabbed.get("selected"))
+			
 			if grabbed.get("selected", False):
 				##unselect
-				self.debug("unselect")
+				self.debug("unselect %s" % grabbed)
 				grabbed["selected"] = False
 				grabbed["selected_time"] = 0
 				#grabbed.color = grabbed.color - self.delta_color_sel
@@ -59,7 +55,7 @@ class Grab_env():
 				
 			else:
 				##select
-				self.debug("select")
+				self.debug("select %s" % grabbed)
 				grabbed["selected"] = True
 				grabbed["selected_time"] = time.time()
 				# FIXME 
@@ -69,7 +65,7 @@ class Grab_env():
 				#self.debug(grabbed.color)
 				#self.debug(grabbed["color_orig"])
 		else:
-			self.debug("Rien de grabbed!")
+			logger.warning("Rien de grabbed!")
 	
 	def toggle_active_cam():
 		self.scene.active_camera

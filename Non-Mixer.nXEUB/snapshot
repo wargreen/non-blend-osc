@@ -1,11 +1,11 @@
 {
 	Spatialization_Console 0x9 create :range 10.000000 :projection 0 :shown 1
-	Mixer_Strip 0x1 create :name "Unnamed" :width "narrow" :tab "signal" :color 1688214311 :gain_mode 0 :mute_mode 0 :group 0x0 :auto_input "" :manual_connection 0
+	Mixer_Strip 0x1 create :name "Move1" :width "narrow" :tab "fader" :color 1688214311 :gain_mode 0 :mute_mode 0 :group 0x0 :auto_input "" :manual_connection 0
 	Chain 0x2 create :strip 0x1 :tab "chain"
 	JACK_Module 0x3 create :parameter_values "0.000000:1.000000" :is_default 1 :chain 0x2 :active 1
-	Gain_Module 0x4 create :parameter_values "-32.897636:0.000000" :is_default 1 :chain 0x2 :active 1
+	Gain_Module 0x4 create :parameter_values "-23.322834:0.000000" :is_default 1 :chain 0x2 :active 1
 	Meter_Module 0x5 create :is_default 1 :chain 0x2 :active 1
-	Spatializer_Module 0x7 create :parameter_values "-16.326508:-55.984253:8.740158:0.000000:19.799999:-7.086609:1.000000:1.000000:0.000000:0.000000" :is_default 0 :chain 0x2 :active 1
+	Spatializer_Module 0x7 create :parameter_values "-43.937012:-46.062992:6.968504:0.000000:19.799999:-7.086609:1.000000:1.000000:0.000000:0.000000" :is_default 0 :chain 0x2 :active 1
 	JACK_Module 0x6 create :parameter_values "4.000000:0.000000" :is_default 1 :chain 0x2 :active 1
 	Controller_Module 0x8 create :is_default 0 :chain 0x2 :active 1 :module 0x7 :port 5 :mode 0
 	Mixer_Strip 0xA create :name "Unnamed.1" :width "narrow" :tab "signal" :color 625151837 :gain_mode 0 :mute_mode 0 :group 0x0 :auto_input "" :manual_connection 0

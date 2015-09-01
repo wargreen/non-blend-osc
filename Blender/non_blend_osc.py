@@ -1,3 +1,7 @@
+from imports.logs import Logged, logger
+logger = logger.getChild(__name__)
+
+
 from imports.blend_grab import Grab_env
 from imports.OSCpipe import OSCpipe
 from imports.OSC import OSCClient, OSCMessage
@@ -18,7 +22,7 @@ def main(ctrl):
 
 		#### Initiate the grabbing environement ####
 		if "grabing_env" not in globalDict:
-			print("Init Grabing_env")
+			logger.info("Init Grabing_env")
 
 			globalDict["grabing_env"] = Grab_env(ctrl)
 
@@ -27,25 +31,22 @@ def main(ctrl):
 
 		#### Initiate the osc pipe environement ####
 		if "osc_pipe" not in globalDict:
-			print("Init OSCpipe")
+			logger.info("Init OSCpipe")
 			globalDict["osc_client"] = OSCClient()
 			osc_client = globalDict["osc_client"]
 			osc_client.connect( (conf["osc_client_addr"], conf["osc_client_port"]) )
 			
 			globalDict["osc_pipe"] = OSCpipe()
-			print(osc_client)
+			logger.debug(osc_client)
 		
 		osc_client = globalDict["osc_client"]
 		osc_pipe = globalDict["osc_pipe"]
 
 		#### now, doing stuff ####
 		grabing_env.grab_obj()
-		osc_pipe.pipes_pool()
-
-
-#	while ctrl.sensors["Always"].positive:
-		#print(grabing)
-	#send infos
-	#connect only once !
-#	client = OSCClient()
-#	client.connect( ("localhost", 7110) )
+		tosend = osc_pipe.pipes_pool()
+		logger.debug(tosend)
+#		osc_client.send(OSCMessage("/string_de_test", 13.37))
+		if tosend:
+			for msg in tosend:
+				osc_client.send(msg)
