@@ -45,7 +45,7 @@ def main(ctrl):
 		#### now, doing stuff ####
 		grabing_env.grab_obj()
 		tosend = osc_pipe.pipes_pool()
-		logger.debug(tosend)
+#		logger.debug(tosend)
 #		osc_client.send(OSCMessage("/string_de_test", 13.37))
 		if tosend:
 			for msg in tosend:

@@ -1,41 +1,52 @@
-#N canvas 2500 203 615 465 10;
+#N canvas 2497 215 615 652 10;
 #X declare -lib mrpeach;
 #X obj 330 20 import mrpeach;
-#X obj 62 371 udpsend;
-#X obj 62 328 packOSC;
-#X obj 62 395 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 62 521 udpsend;
+#X obj 62 478 packOSC;
+#X obj 62 545 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 65 50 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 6200 1;
-#X msg 127 348 disconnect;
-#X msg 62 72 send Non-Mixer.nXEUB/strip/Unnamed/Gain/Gain%20(dB) \$1
-;
+-1 -1 5400 1;
+#X msg 127 498 disconnect;
 #X obj 75 110 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 6100 1;
-#X msg 72 132 send Non-Mixer.nXEUB/strip/Unnamed/Spatializer/Angle
-\$1;
+-1 -1 7300 1;
 #X obj 85 160 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 6600 1;
-#X msg 97 238 send Non-Timeline.nAJNN/track/Audio/Control \$1;
-#X obj 100 214 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 7000 1;
-#X msg 82 182 send Non-Mixer.nXEUB/strip/Unnamed.1/Aux/Gain%20(dB)
+-1 -1 8700 1;
+#X obj 100 214 hsl 128 15 -180 180 0 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 7600 1;
+#X obj 111 270 hsl 128 15 0 15 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 6800 1;
+#X msg 127 477 connect 127.0.0.1 13293;
+#X msg 82 182 send Non-Mixer.nXEUB/strip/Move1/Spatializer/Radius \$1
+;
+#X msg 108 293 send Non-Mixer.nXEUB/strip/Move1/Spatializer/Radius/unscaled
 \$1;
-#X msg 108 293 send Non-Timeline.nAJNN/track/Audio/Control.1 \$1;
-#X obj 111 270 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 6200 1;
-#X msg 127 327 connect 127.0.0.1 16281;
+#X msg 72 132 send Non-Mixer.nXEUB/strip/Move1/Spatializer/Azimuth
+\$1;
+#X msg 97 238 send Non-Mixer.nXEUB/strip/Move1/Spatializer/Azimuth/unscaled
+\$1;
+#X text 493 252 -180 to +180;
+#X text 501 295 in meters;
+#X obj 121 330 hsl 128 15 -180 180 0 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 4600 1;
+#X msg 118 353 send Non-Mixer.nXEUB/strip/Move1/Spatializer/Elevation/unscaled
+\$1;
+#X text 493 362 -180 to +180;
+#X msg 62 72 send Non-Mixer.nXEUB/strip/Move1/Spatializer/Elevation
+\$1;
 #X connect 1 0 3 0;
 #X connect 2 0 1 0;
-#X connect 4 0 6 0;
+#X connect 4 0 20 0;
 #X connect 5 0 1 0;
-#X connect 6 0 2 0;
-#X connect 7 0 8 0;
-#X connect 8 0 2 0;
+#X connect 6 0 13 0;
+#X connect 7 0 11 0;
+#X connect 8 0 14 0;
 #X connect 9 0 12 0;
-#X connect 10 0 2 0;
-#X connect 11 0 10 0;
+#X connect 10 0 1 0;
+#X connect 11 0 2 0;
 #X connect 12 0 2 0;
 #X connect 13 0 2 0;
-#X connect 14 0 13 0;
-#X connect 15 0 1 0;
+#X connect 14 0 2 0;
+#X connect 17 0 18 0;
+#X connect 18 0 2 0;
+#X connect 20 0 2 0;

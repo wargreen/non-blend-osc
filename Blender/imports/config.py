@@ -13,9 +13,9 @@ conf = {
 	"osc_client_port" : 1337,
 	# full OSC path = osc_base_path + ObjectName + osc_[angle, radius, elevation]_path
 	"osc_base_path": "Non-Mixer.nXEUB/strip/",
-	"osc_azimuth_path": "/Spatializer/Azimuth",
-	"osc_radius_path": "/Spatializer/Radius",
-	"osc_elevation_path": "/Spatializer/Elevation"
+	"osc_azimuth_path": "/Spatializer/Azimuth/unscaled",
+	"osc_radius_path": "/Spatializer/Radius/unscaled",
+	"osc_elevation_path": "/Spatializer/Elevation/unscaled"
 	}
 
 
